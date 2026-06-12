@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Dynamically remapped standard colors */
+  --color-white: var(--white-color, #ffffff);
+  --color-slate-50: var(--slate-50-color, #f8fafc);
+  --color-slate-100: var(--slate-100-color, #f1f5f9);
+  --color-slate-200: var(--slate-200-color, #e2e8f0);
+  --color-slate-300: var(--slate-300-color, #cbd5e1);
+  --color-slate-400: var(--slate-400-color, #94a3b8);
+  --color-slate-500: var(--slate-500-color, #64748b);
+  --color-slate-600: var(--slate-600-color, #475569);
+  --color-slate-700: var(--slate-700-color, #334155);
+  --color-slate-800: var(--slate-800-color, #1e293b);
+  --color-slate-900: var(--slate-900-color, #0f172a);
+  --color-slate-950: var(--slate-950-color, #020617);
+
+  /* LGL Technologies Brand Theme: Balanced Sapphire Blue and Vibrant/Forest Green from the new logo */
+  --color-indigo-50: var(--indigo-50-color, #f0f7ff);       /* Lightest brand soft blue-mint tint */
+  --color-indigo-100: var(--indigo-100-color, #e0f2fe);      /* Clean brand light blue helper background */
+  --color-indigo-200: var(--indigo-200-color, #bae6fd);      /* Subtle brand border tint */
+  --color-indigo-300: var(--indigo-300-color, #7dd3fc);      /* Accent boundary blue */
+  --color-indigo-400: #2b68f3;      /* Sapphire brand blue leaf from LGL logo */
+  --color-indigo-500: #22c55e;      /* Bright vibrant leaf green from LGL logo */
+  --color-indigo-550: #16a34a;      /* Intermediate vibrant leaf green */
+  --color-indigo-560: #16a34a;
+  --color-indigo-570: #15803d;
+  --color-indigo-580: #166534;
+  --color-indigo-600: #2b68f3;      /* Sapphire brand blue primary action button */
+  --color-indigo-650: var(--indigo-650-color, #14532d);      /* Deep forest green brand primary for sidebar items & tabs */
+  --color-indigo-700: var(--indigo-700-color, #0f172a);      /* Dark corporate slate heading */
+  --color-indigo-750: #1e40af;      /* Darker brand blue for button hover actions */
+  --color-indigo-800: var(--indigo-800-color, #0f172a);      /* Dark slate navy */
+  --color-indigo-900: var(--indigo-900-color, #1e3a8a);      /* Deep brand blue for key text details */
+  --color-indigo-950: var(--indigo-950-color, #0f172a);      /* Primary dark layout frame accent */
+}
+
+:root {
+  --white-color: #ffffff;
+  --slate-50-color: #f8fafc;
+  --slate-100-color: #f1f5f9;
+  --slate-200-color: #e2e8f0;
+  --slate-300-color: #cbd5e1;
+  --slate-400-color: #94a3b8;
+  --slate-500-color: #64748b;
+  --slate-600-color: #475569;
+  --slate-700-color: #334155;
+  --slate-800-color: #1e293b;
+  --slate-900-color: #0f172a;
+  --slate-950-color: #020617;
+
+  --indigo-50-color: #f0f7ff;
+  --indigo-100-color: #e0f2fe;
+  --indigo-200-color: #bae6fd;
+  --indigo-300-color: #7dd3fc;
+  --indigo-650-color: #14532d;
+  --indigo-705-color: #334155;
+  --indigo-700-color: #0f172a;
+  --indigo-800-color: #0f172a;
+  --indigo-900-color: #1e3a8a;
+  --indigo-950-color: #0f172a;
+}
+
+.dark {
+  /* Dynamic inversion of slates for rich tech anthracite workspace */
+  --white-color: #1e293b;          /* bg-white cards/header become deep slate (slate-800) */
+  --slate-50-color: #0b0f19;       /* bg-slate-50 main frame becomes dark slate (slate-950 pitch) */
+  --slate-100-color: #131c2e;      /* bg-slate-100 becomes mid slate (slate-900-ish tint) */
+  --slate-200-color: #2e3c54;      /* borders become eye-safe subtle charcoal borders */
+  --slate-300-color: #475569;      
+  --slate-400-color: #64748b;      
+  --slate-500-color: #94a3b8;      /* light grey texts */
+  --slate-600-color: #cbd5e1;      /* light grey highlights */
+  --slate-700-color: #e2e8f0;      /* primary screen copy */
+  --slate-800-color: #f1f5f9;      /* prominent text elements */
+  --slate-900-color: #ffffff;      /* pure stark white headings */
+  --slate-950-color: #ffffff;
+
+  /* Custom LGL Brand Integrations for Dark Canvas */
+  --indigo-50-color: #1a2333;       /* dark indigo soft background instead of baby blue */
+  --indigo-100-color: #1e2d4a;      /* brand blue overlays become dark blue pods */
+  --indigo-200-color: #2b3e64;      
+  --indigo-300-color: #3b5284;
+  --indigo-650-color: #22c55e;      /* In dark mode, forest green is better replaced by a vibrant green indicator */
+  --indigo-705-color: #cbd5e1;
+  --indigo-700-color: #f1f5f9;      /* header slate text becomes light */
+  --indigo-800-color: #e2e8f0;      
+  --indigo-900-color: #60a5fa;      /* deep brand text blue becomes a soft accessible neon-blue */
+  --indigo-950-color: #1e293b;
+}
+
+/* Ensure body respects current theme backgrounds */
+html, body {
+  @apply transition-colors duration-200;
+}
+html.dark, body.dark {
+  background-color: var(--slate-50-color);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translate(-50%, -20px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideUpFade {
+  from {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-up-fade {
+  animation: slideUpFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.card-hover-lift {
+  @apply transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-md hover:shadow-slate-200/50 dark:hover:shadow-none;
+}
+
